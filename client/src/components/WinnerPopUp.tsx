@@ -3,7 +3,7 @@ import { Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter,
         ModalBody, useDisclosure, Text } from '@chakra-ui/react';
 
 interface WinnerPopUpProps {
-  quantity: number;
+  //quantity: number;
   //setLine: Dispatch<SetStateAction<number>>;
   setRound: Dispatch<SetStateAction<number>>;
 }

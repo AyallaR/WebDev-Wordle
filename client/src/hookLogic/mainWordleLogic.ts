@@ -1,5 +1,6 @@
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { checkWord } from "./server-request";
 
 interface Attempt {
     key: string;
@@ -8,12 +9,12 @@ interface Attempt {
   
   //  לוגיקה העיקרית
   const mainWordleLogic = (correctWord: string) => {
-    let defaultTurn = 0;
-    let defaultCurrentAttempt: string | null = null;
-    let defaultAttempts: Array<Attempt[]> | null = null;
-    let defaultHistory: Array<string> = [];
-    let defaultKeysBColor = {};
-    let defaultIsCorrect = false;
+    const defaultTurn = 0;
+    const defaultCurrentAttempt: string | null = null;
+    const defaultAttempts: Array<Attempt[]> | null = null;
+    const defaultHistory: Array<string> = [];
+    const defaultKeysBColor = {};
+    const defaultIsCorrect = false;
   
     const [turn, setTurn] = useState(defaultTurn);
     const [currentAttempt, setCurrentAttempt] = useState(defaultCurrentAttempt ?? ''); 
@@ -44,20 +45,16 @@ interface Attempt {
     }, []);
   
   
-    const processAttempt = () => {
-      let correctWordArray = [...correctWord];
-      let formattedAttempt: Attempt[] = [...currentAttempt].map((letter, i) => {
-        // בדיקת צבע
-        let color = 'gray'; // צבע ברירת מחדל
-        if (letter.toLowerCase() === correctWordArray[i]) {
-          color = 'green'; // במקום הנכון--ירוק
-        } else if (correctWordArray.includes(letter.toLowerCase())) {
-          color = 'pink'; // במקום הלא נכון אבל נמצא במילה הנכונה-- ורוד
-        }
-  
+    const processAttempt = async() => {
+      //משנה צבע לללוח
+      const attemptWordArray = await checkWord(currentAttempt,correctWord)
+      if(attemptWordArray ==="win"){
+        setIsCorrect(true)
+      }
+      const formattedAttempt: Attempt[] = [...currentAttempt].map((letter, i) => {
         return {
           key: letter.toLowerCase(),
-          color,
+          color: attemptWordArray[letter]
         };
       });
   
@@ -70,7 +67,7 @@ interface Attempt {
   
       //  מעדכן את המערך בניסיונות
       setAttempts((prev) => {
-        let attemptsArray = [...prev];
+        const attemptsArray = [...prev];
         attemptsArray[turn] = formattedAttempt;
         localStorage.setItem('attempts', JSON.stringify(attemptsArray));
         return attemptsArray;
@@ -78,7 +75,7 @@ interface Attempt {
   
       //הצבע יושפע בSET בקונמפוננטה 
       setKeysBColor((prev) => {
-        let newKeysBColor = { ...prev };
+        const newKeysBColor = { ...prev };
         formattedAttempt.forEach((letterObj) => {
           const currentKeyBColor = newKeysBColor[letterObj.key];
   

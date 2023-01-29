@@ -1,8 +1,6 @@
 import { Button, Flex, Heading, HStack, useColorMode } from "@chakra-ui/react";
 import { FaSun, FaMoon} from 'react-icons/fa'
-import { userName } from "../App";
 import { InfoPopUpScreen } from './InfoPopUpScreen';
-import LogInScreen from './LogInScreen';
 
 // interface HeaderProperties {
 //   // line: number;
@@ -11,7 +9,7 @@ import LogInScreen from './LogInScreen';
 
 const Header = (/* {quantity}: HeaderProperties */) => {
   const {colorMode, toggleColorMode} = useColorMode();
-  const hello= "Hi" + userName;
+  //const hello= "Hi" + userName;
 
   return (
     <Flex alignItems= 'center' justifyContent= 'space-between' h= '10vh' px={4} >
@@ -27,7 +25,7 @@ const Header = (/* {quantity}: HeaderProperties */) => {
         >
           {colorMode === 'dark' ? <FaSun /> : <FaMoon />}
         </Button>
-        <LogInScreen /> {hello}
+        {/* <LogInScreen /> {hello} */}
       </HStack>
     </Flex>
   );

@@ -7,7 +7,7 @@ interface KeyBProperties {
     keysBColor: {[key: string]: string;};
     letter: {key: string;};
     handleKeyup: ({key,}: | KeyboardEvent | {key: string;}) => void
-};
+}
 
 const KeyB = ({ keysBColor, letter, handleKeyup }: KeyBProperties) => {
     const {colorMode} = useColorMode();

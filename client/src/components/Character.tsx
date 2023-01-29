@@ -78,7 +78,7 @@ const Character = ({letter, color, order}: CharacterProperties) => {
 // דיילי בין האותיות
     let delay = undefined;
     if (order) {
-        delay = `${0.2 * delay}s`
+        delay = `${0.2 * delay}s`;
     }
 
     return (

@@ -1,17 +1,15 @@
-import defaultArray from './data';
+import data from './data';
 
-
-const WORDS = [
-    'lemon',
-    'brain',
-    'pinky'
-];
+export function getWordById(wid:number) {
+    return data[wid]
+}
 
 export function checkWord(g:string, i:number) {
-    let guessColor=[""];
-    const org = WORDS[i];
-    if(g===org) return 'win';
-    for(let j=0; i<WORDS.length;j++){
+    const guessColor= {};
+    const org = data[i];
+    if(g === org) return 'win';
+    
+    for(let j=0; j<org.length;j++){
         if(org[j]===g[j]){
             guessColor[j]="green";
         }
@@ -28,38 +26,9 @@ export function checkWord(g:string, i:number) {
     // calcualte the differnece between g and org
 }
 
-const getCorrectWord = () => {
+export function getRandomtWord() {
 
     // const word = WORDS[ Math.round(Math.random() * WORDS.length) ];
-    return Math.round(Math.random() * WORDS.length);
-/*
+    return String(Math.round(Math.random() * data.length));
 
-    let correctWordArray: string[] = [];
-
-    let correctWordHistory: string[] = JSON.parse(
-        localStorage.getItem('dataList') || '[]'
-  );
-
-    if (correctWordHistory.length == 0) {
-        correctWordArray = defaultArray;
-        localStorage.setItem('dataList', JSON.stringify(correctWordArray));
-    } else {
-       correctWordArray = correctWordHistory;
-    }
-
-    let randomNumber = JSON.parse(localStorage.getItem('randint') || 'null');
-        if (!randomNumber) {
-            randomNumber = Math.floor(Math.random() * correctWordArray.length);
-            localStorage.setItem('randint', JSON.stringify(randomNumber)); 
-        }
-    const correctWord = correctWordArray[randomNumber];
-
-    return {
-        word: correctWord,
-        // line: defaultArray.length - correctWordArray.length,
-        // quantity: defaultArray.length,
-    };
-    */
-};
-
-export { getCorrectWord };
+}
