@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "target": "es2019",
+    "lib": ["dom", "esnext"],
+    "moduleResolution": "node",
+    "esModuleInterop": true
+  },
+  "include": ["src"],
+  "exclude": ["**/*.test.ts", "**/*.spec.ts", "**/*.cy.ts"]
+}
