@@ -1,7 +1,7 @@
 import data from './data';
 
 export function getWordById(wid:number) {
-    return data[wid]
+    return data[wid];
 }
 
 export function checkWord(g:string, i:number) {
