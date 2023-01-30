@@ -7,8 +7,9 @@ export function getWordById(wid:number) {
 export function checkWord(g:string, i:number) {
     const guessColor= {};
     const org = data[i];
-    if(g === org) return 'win';
-    
+    if(g === org) 
+    return {"state" :'win'};
+
     for(let j=0; j<org.length;j++){
         if(org[j]===g[j]){
             guessColor[j]="green";

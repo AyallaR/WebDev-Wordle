@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getRandonWord } from "../hookLogic/server-request";
 import Header from "./Header";
 import MainWordle from "./MainWordle";
-//import WinnerPopUp from "./WinnerPopUp";
+import WinnerPopUp from "./WinnerPopUp";
 
 const MainBox = () => {
     const [round, setRound] = useState(0);
@@ -21,10 +21,10 @@ const MainBox = () => {
                 {correctWord && (
                     <MainWordle correctWord={correctWord.word} setRound={setRound} />
                 )}
-                {/* {attemptWordArray ==="win" } */}
-                {/* { correctWord.word === 'win' && (
+                {/* {isCorrect ==="win" } */}
+                {/* {
                     <WinnerPopUp setRound={setRound} />
-                )} */}
+                } */}
             </Box>
         </Box>
     );

@@ -20,8 +20,8 @@ interface BoardProperties {
 
 const Row = ({attempt, currentAttempt}: RowProperties) =>{
   
-  if (attempt === null) attempt == undefined;
-  
+  if (attempt === null) attempt = undefined;
+  //attempt = undefined;
 //מקליד
   if (currentAttempt || currentAttempt === ''){
     // FOR הופך למערך של אותיות ועושה פור 

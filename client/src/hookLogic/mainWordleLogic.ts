@@ -48,7 +48,7 @@ interface Attempt {
     const processAttempt = async() => {
       //משנה צבע לללוח
       const attemptWordArray = await checkWord(currentAttempt, correctWord)
-      if(attemptWordArray ==="win"){
+      if(attemptWordArray["state"] ==="win"){
         setIsCorrect(true)
       }
       const formattedAttempt: Attempt[] = [...currentAttempt].map((letter, i) => {
