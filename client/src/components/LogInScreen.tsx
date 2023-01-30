@@ -1,33 +1,42 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Heading, Input, Button, InputGroup, Stack, InputLeftElement,
   Box, Link, Avatar, FormControl, FormHelperText, InputRightElement,
   useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, 
   Flex } from "@chakra-ui/react";
 import { FaUserAlt, FaLock, FaLightbulb } from "react-icons/fa";
-
+import { VscAccount } from "react-icons/vsc";
 
 const LogInScreen = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: true });
-  const [showPassword, setShowPassword] = useState(false);
-  const handleShowClick = () => setShowPassword(!showPassword);
+  const { isOpen, onOpen, onClose } = useDisclosure(/* { defaultIsOpen: false } */);
+  // const [showPassword, setShowPassword] = useState(false);
+  // const handleShowClick = () => setShowPassword(!showPassword);
+  const btnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    onOpen();
-  });
+      const notFirstVisit = JSON.parse(localStorage.getItem('notFirstVisit') || 'null');
+      
+      localStorage.setItem('notFirstVisit', JSON.stringify(true));
+      if (!notFirstVisit) btnRef?.current?.click();
+  }, []);
+  // useEffect(() => {
+  //   onOpen();
+  // });
 
   return (
     <>
       <Button
+        ref={btnRef}
         onClick={onOpen}
         size={['xs', 'sm', 'md']}
         variant="ghost"
       >
-        <FaLightbulb />
+        <VscAccount />
       </Button>
 
       <Modal
         isOpen={isOpen}
         onClose={onClose}
+        closeOnOverlayClick={false}
         isCentered
         motionPreset="slideInBottom"
         size={['sm', 'md', 'lg']}
@@ -70,11 +79,11 @@ const LogInScreen = () => {
                           pointerEvents="none"
                           children={<FaUserAlt color="gray.300" />}
                         />
-                        <Input type="email" placeholder="email address" />
+                        <Input type="text" placeholder="your name" />
                       </InputGroup>
                     </FormControl>
-                    <FormControl>
-                      <InputGroup>
+                    {/* <FormControl> */}
+                      {/* <InputGroup>
                         <InputLeftElement
                           pointerEvents="none"
                           color="gray.300"
@@ -93,8 +102,9 @@ const LogInScreen = () => {
                       <FormHelperText textAlign="right">
                         <Link>forgot password?</Link>
                       </FormHelperText>
-                    </FormControl>
+                    </FormControl> */}
                     <Button
+                      onClick={onClose}
                       borderRadius={0}
                       type="submit"
                       variant="solid"
