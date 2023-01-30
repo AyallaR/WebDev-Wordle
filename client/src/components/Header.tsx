@@ -2,14 +2,8 @@ import { Button, Flex, Heading, HStack, useColorMode } from "@chakra-ui/react";
 import { FaSun, FaMoon} from 'react-icons/fa'
 import { InfoPopUpScreen } from './InfoPopUpScreen';
 
-// interface HeaderProperties {
-//   // line: number;
-//   quantity: number;
-// }
-
-const Header = (/* {quantity}: HeaderProperties */) => {
+const Header = () => {
   const {colorMode, toggleColorMode} = useColorMode();
-  //const hello= "Hi" + userName;
 
   return (
     <Flex alignItems= 'center' justifyContent= 'space-between' h= '10vh' px={4} >
@@ -17,7 +11,7 @@ const Header = (/* {quantity}: HeaderProperties */) => {
         Wordle
       </Heading>
       <HStack>
-        <InfoPopUpScreen /* quantity={quantity} */ />
+        <InfoPopUpScreen />
         <Button 
           onClick={toggleColorMode}
           size= {['xs', 'sm', 'md']}

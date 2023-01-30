@@ -5,26 +5,20 @@ interface GameOverPopUpProps {
   gameOverStatus: string;
   correctWord: string;
   resetBoard: () => void;
-  //setLine: Dispatch<SetStateAction<number>>;
   setRound: Dispatch<SetStateAction<number>>;
 }
 
 const GameOverPopUp = ({ gameOverStatus, correctWord, resetBoard,
-  /* setLine, */ setRound,}: GameOverPopUpProps) => {
+  setRound,}: GameOverPopUpProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // Open the modal after render
   useEffect(() => {
     if (gameOverStatus) {
       onOpen();
     }
   }, [gameOverStatus, onOpen]);
-//**getSolution */ =>getCorrectWord**
-//**solutionsList=> dataList **
-//**solutionHistory=> correctHistory **
-//**solutionArray=> correctArray **
+
 const winGame = () => {
-    // remove solution from solutionsList in localStorage
     const dataList: string[] = JSON.parse(
       localStorage.getItem('dataList') || '[]');
       
@@ -32,17 +26,14 @@ const winGame = () => {
     localStorage.setItem('dataList', JSON.stringify(newDataList));
 
     resetBoard();
-    //setLine((prev) => prev + 1);
     setRound((prev) => prev + 1);
     onClose();
   };
 
   const loseGame = () => {
-    // reset the solutionsList in LocalStorage
     localStorage.removeItem('dataList');
 
     resetBoard();
-    //setLine(0);
     setRound((prev) => prev + 1);
     onClose();
   };

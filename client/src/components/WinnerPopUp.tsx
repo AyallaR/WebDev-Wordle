@@ -3,12 +3,10 @@ import { Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter,
         ModalBody, useDisclosure, Text } from '@chakra-ui/react';
 
 interface WinnerPopUpProps {
-  //quantity: number;
-  //setLine: Dispatch<SetStateAction<number>>;
   setRound: Dispatch<SetStateAction<number>>;
 }
 
-const WinnerPopUp = ({ /* quantity, */ /* setLine, */ setRound }: WinnerPopUpProps) => {
+const WinnerPopUp = ({ setRound }: WinnerPopUpProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // פותח את המודל אחרי רינדור
@@ -34,7 +32,6 @@ const WinnerPopUp = ({ /* quantity, */ /* setLine, */ setRound }: WinnerPopUpPro
         <ModalFooter display="flex" justifyContent="center">
           <Button
             onClick={() => {
-              //setLine(0);
               setRound(0);
               onClose();
             }}

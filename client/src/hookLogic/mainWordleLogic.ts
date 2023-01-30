@@ -47,14 +47,14 @@ interface Attempt {
   
     const processAttempt = async() => {
       //משנה צבע לללוח
-      const attemptWordArray = await checkWord(currentAttempt,correctWord)
+      const attemptWordArray = await checkWord(currentAttempt, correctWord)
       if(attemptWordArray ==="win"){
         setIsCorrect(true)
       }
       const formattedAttempt: Attempt[] = [...currentAttempt].map((letter, i) => {
         return {
           key: letter.toLowerCase(),
-          color: attemptWordArray[letter]
+          color: attemptWordArray[i]//=====[letter]
         };
       });
   

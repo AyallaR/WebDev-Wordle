@@ -70,7 +70,7 @@ const Character = ({letter, color, order}: CharacterProperties) => {
         }`;
     
     
-    let animation = `${jumpWord} 0.1s ease`
+    let animation = `${jumpWord} 0.2s ease`
     // הופך את הקפיצות להפיכות
     if (color === 'gray' || color === 'green' || color === 'pink') {
         animation = `${flipWord} 0.6s ease`;
@@ -78,7 +78,7 @@ const Character = ({letter, color, order}: CharacterProperties) => {
 // דיילי בין האותיות
     let delay = undefined;
     if (order) {
-        delay = `${0.2 * delay}s`;
+        delay = `${0.3 * delay}s`;
     }
 
     return (
@@ -89,7 +89,7 @@ const Character = ({letter, color, order}: CharacterProperties) => {
             borderColor= {borderDefaultColor}
             animation= {animation}
             userSelect= "none"
-            sx= {{ animationDelay: delay, animationFillMode: 'forwards' }} // backgroundColor come from animationFillMode forwards
+            sx= {{ animationDelay: delay, animationFillMode: 'forwards' }} 
         >
             <Text fontWeight={700} fontSize="x-large">
                 {letter.toUpperCase()}

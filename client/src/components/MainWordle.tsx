@@ -7,11 +7,10 @@ import mainWordleLogic from '../hookLogic/mainWordleLogic';
 
 interface MainWordleProps {
     correctWord: string;
-    //setLine: Dispatch<SetStateAction<number>>;
     setRound: Dispatch<SetStateAction<number>>;
 }
   
-const MainWordle = ({ correctWord, /* setLine ,*/ setRound }: MainWordleProps) => {
+const MainWordle = ({ correctWord, setRound }: MainWordleProps) => {
     const {
         currentAttempt,
         handleKeyup,
@@ -61,7 +60,6 @@ const MainWordle = ({ correctWord, /* setLine ,*/ setRound }: MainWordleProps) =
                 gameOverStatus={gameOverStatus}
                 correctWord={correctWord}
                 resetBoard={resetBoard}
-                //setLine={setLine}
                 setRound={setRound}
             />
         )}

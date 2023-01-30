@@ -13,17 +13,19 @@ interface RowProperties {
 
 interface BoardProperties {
   currentAttempt: string;
-  attempts: LetterObj[][];
+  attempts: Array<LetterObj[]> /* LetterObj[][] */;
   // x: Array<Array<LetterObj>>;
   turn: number;
 }
 
 const Row = ({attempt, currentAttempt}: RowProperties) =>{
+  
   if (attempt === null) attempt == undefined;
+  
 //מקליד
   if (currentAttempt || currentAttempt === ''){
     // FOR הופך למערך של אותיות ועושה פור 
-    const letters = [...currentAttempt].map((letter) => {
+    let letters = [...currentAttempt].map((letter) => {
       //[...currentAttempt.split('')]
       return {
         key: letter,

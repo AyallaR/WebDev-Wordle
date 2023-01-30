@@ -3,11 +3,8 @@ import { useEffect, useRef } from "react";
 import {TiInfoLargeOutline} from 'react-icons/ti'
 import { Character } from "./Character";
 
-// interface InfoPopUpScreenProp {
-//     quantity: number;
-// }
 
-export const InfoPopUpScreen = (/* {quantity}: InfoPopUpScreenProp */) => {
+export const InfoPopUpScreen = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef<HTMLButtonElement>(null);
 
@@ -44,11 +41,9 @@ export const InfoPopUpScreen = (/* {quantity}: InfoPopUpScreenProp */) => {
                         <VStack alignItems="flex-start">
                             <Text fontSize="sm">
                                 <b>Wordle Warning </b> This GAME may potentialy be for the true hardcore. 
-                                You beat the game by guessing all the correct Wordles consecutively.
+                                You beat the game by guessing the correct Wordles.
                             </Text>
-                            {/* <Text fontSize="sm">
-                                In other words, you win by accumulating {quantity} win streaks.
-                            </Text> */}
+                            
                             <Text fontSize="sm">
                                 You can rest assured that the same Wordle won&apos;t show up
                                 twice. The game will get easier the longer you play as the

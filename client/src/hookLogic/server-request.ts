@@ -7,14 +7,14 @@ export async function getRandonWord(): Promise<string> {
     return randonIndexWord;
   }
 
-  export async function getWordById(id: number): Promise<string> {
+  export async function getWordById(id: string): Promise<string> {
     const wordById = fetch(`http://localhost:3333/${id}`).then((response) =>
       response.json()
     );
     return wordById;
   }
 
-  export async function checkWord(guess:string, id:number): Promise<string> {
+  export async function checkWord(guess:string, id:string): Promise<string> {
     const checkWord = fetch(`http://localhost:3333/${guess}/${id}`).then((response) =>
       response.json()
     );
