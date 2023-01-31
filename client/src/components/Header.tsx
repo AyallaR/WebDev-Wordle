@@ -1,7 +1,8 @@
 import { Button, Flex, Heading, HStack, useColorMode } from "@chakra-ui/react";
-import { FaSun, FaMoon} from 'react-icons/fa'
+import { FaSun, FaMoon, FaGithub} from 'react-icons/fa'
 import { InfoPopUpScreen } from './InfoPopUpScreen';
 import LogInScreen from "./LogInScreen";
+
 
 const Header = () => {
   const {colorMode, toggleColorMode} = useColorMode();
@@ -20,8 +21,17 @@ const Header = () => {
         >
           {colorMode === 'dark' ? <FaSun /> : <FaMoon />}
         </Button>
-{        <LogInScreen /> 
-}      </HStack>
+        <LogInScreen /> 
+        <Button
+          as="a"
+          href="https://github.com/AyallaR/WebDev-Wordle"
+          target="_blank"
+          size={['xs', 'sm', 'md']}
+          variant="ghost"
+        >
+          <FaGithub />
+        </Button>
+      </HStack>
     </Flex>
   );
 };
